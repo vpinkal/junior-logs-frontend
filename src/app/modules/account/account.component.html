@@ -1,0 +1,13 @@
+<div class="w-full m-5 bg-white rounded-2xl">
+      <nav mat-tab-nav-bar ngClass = "tabs">
+        <a mat-tab-link routerLink="transaction-list" routerLinkActive="active-link" class="font-['Poppins'] not-italic">Transaction List</a>
+        <a mat-tab-link routerLink="invoices" routerLinkActive="active-link" class="font-['Poppins']">Invoices</a>
+        <a mat-tab-link routerLink="payments" routerLinkActive="active-link" class="font-['Poppins']">Payments</a>
+        <a mat-tab-link routerLink="credit-notes" routerLinkActive="active-link" class="font-['Poppins']">Credit Notes</a>
+        <a mat-tab-link routerLink="bond-payments" routerLinkActive="active-link" class="font-['Poppins']">Bond Payments</a>
+        <a mat-tab-link routerLink="age-debtors" routerLinkActive="active-link" class="font-['Poppins']">Age Debtors</a>
+     </nav>  
+     <div>	
+       <router-outlet></router-outlet>	
+     </div>
+</div>

@@ -1,0 +1,56 @@
+<div>
+    <div class="bg-[#F6F8FB] rounded-lg w-[72vw] m-4 pt-2">
+        <div class="flex items-center">
+            <div class="w-[70%]">
+                <form class="filter-form W-[100%] flex items-center justify-around">
+                    <mat-form-field appearance="fill" class="w-[30%]">
+                    <mat-label>Child</mat-label>
+                    <input type="text"
+                            placeholder="Select Child"
+                            aria-label="Number"
+                            matInput
+                            [formControl]="filterChild"
+                            [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filterChildOptions | async" [value]="option">
+                        {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-[30%]">
+                        <mat-label>Payee</mat-label>
+                        <input type="text"
+                            placeholder="Select payee"
+                            aria-label="Number"
+                            matInput
+                            [formControl]="filterPayee"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filterPayeeOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-checkbox
+                    name="filterCheck"
+                    class="w-[30%]"
+                    [(ngModel)]="filterCheck">
+                    Include those parents who are in credit
+                    </mat-checkbox>
+                </form>
+            </div>
+            <div class="flex justify-around w-[30%]">
+                <button mat-raised-button class="bg-[#009688] rounded-xl text-white">Search</button>
+                <button mat-fab color="warn">
+                    <mat-icon svgIcon="heroicons_solid:refresh"></mat-icon>
+                </button>
+                <button mat-fab class="bg-[#EAECF7] text-black">
+                    <mat-icon svgIcon="heroicons_solid:chevron-down"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div>
+        
+    </div>
+</div>

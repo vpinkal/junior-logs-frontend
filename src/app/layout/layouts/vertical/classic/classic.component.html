@@ -3,10 +3,10 @@
 
 
 <!-- Wrapper -->
-<div class="flex flex-col flex-auto w-full min-w-0">
+<div class="flex flex-col flex-auto w-full min-w-0  font-['Poppins']">
 
     <!-- Header -->
-    <div class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow-sm dark:shadow-none dark:border-b bg-[#E3F2F1] dark:bg-transparent print:hidden">
+    <div class="relative flex flex-0 items-center w-full h-[9vh] min-h-[5vh] max-h-[9vh] px-4 md:px-6 z-49 shadow-sm dark:shadow-none dark:border-b bg-[#E3F2F1] dark:bg-transparent print:hidden">
         <button *ngIf="isScreenSmall"
         mat-icon-button
         (click)="toggleNavigation('mainNavigation')">
@@ -16,7 +16,7 @@
             <img src="/assets/images/logo1.png">
         </div>
         <div class="w-12 ml-14 opacity-30 border-2 border-solid border-[#ACCCD0] rotate-90"></div>
-        <a class="block mt-4 lg:inline-block lg:mt-0 text-black text-base font-['Poppins']">
+        <a class="block lg:inline-block lg:mt-0 text-black text-base">
             <span class="font-bold mr-0.5">System portal:</span><span class="font-medium">Finance & Account > Account</span>
           </a>
         <div class="flex items-center pl-2 ml-auto">
@@ -29,7 +29,7 @@
     <div class="flex">
         <!-- Navigation -->
         <fuse-vertical-navigation
-        class="dark bg-[#009688] shadow-[0_1px_4px_34px_rgba(255,255,255,0.25)] print:hidden"
+        class="dark bg-[#009688] print:hidden max-h-[100vh] h-[91vh] min-h-[91vh]"
         [mode]="isScreenSmall ? 'over' : 'side'"
         [name]="'mainNavigation'"
         [navigation]="navigation.default"
