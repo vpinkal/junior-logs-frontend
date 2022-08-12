@@ -11,6 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const accountRoutes: Route[] = [
   {
@@ -64,6 +67,9 @@ const accountRoutes: Route[] = [
     MatInputModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
     MatTabsModule,
     ReactiveFormsModule,
     RouterModule.forChild(accountRoutes)

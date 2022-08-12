@@ -7,6 +7,7 @@ import { NotificationsService } from 'app/layout/common/notifications/notificati
 import { QuickChatService } from 'app/layout/common/quick-chat/quick-chat.service';
 import { ShortcutsService } from 'app/layout/common/shortcuts/shortcuts.service';
 import { UserService } from 'app/core/user/user.service';
+import { AgeDebtorsService } from './modules/account/age-debtors/age-debtors.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,7 @@ export class InitialDataResolver implements Resolve<any>
      * Constructor
      */
     constructor(
+        private _ageDebtorsService: AgeDebtorsService,
         private _messagesService: MessagesService,
         private _navigationService: NavigationService,
         private _notificationsService: NotificationsService,
@@ -41,6 +43,7 @@ export class InitialDataResolver implements Resolve<any>
     {
         // Fork join multiple API endpoint calls to wait all of them to finish
         return forkJoin([
+            this._ageDebtorsService.getAll(),
             this._navigationService.get(),
             this._messagesService.getAll(),
             this._notificationsService.getAll(),

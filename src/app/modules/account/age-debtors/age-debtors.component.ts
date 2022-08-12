@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { AgeDebtorsService } from './age-debtors.service';
+import { Subject, takeUntil } from 'rxjs';
+import { AgeDebtor } from './age-debtors.types';
 
 @Component({
   selector: 'app-age-debtors',
@@ -18,7 +24,22 @@ export class AgeDebtorsComponent implements OnInit {
   payeeOptions: string[] = ['1', '2', '3']
   filterCheck: Boolean = false;
 
-  constructor() { }
+  displayedColumns: string[] = ['payee', 'child', 'week3', 'week2', 'week1', 'current', 'pendingAmount', 'overPayment', 'pendingCreditNote', 'totalPendingAmount'];
+  dataSource: MatTableDataSource<AgeDebtor>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
+
+
+  constructor(private _ageDebtorsService: AgeDebtorsService) {
+    this._ageDebtorsService.ageDebtors$
+    .subscribe((messages: AgeDebtor[]) => {
+
+        // Load the messages
+        this.dataSource = new MatTableDataSource(messages);
+    });
+   }
 
   ngOnInit(): void {
     this.filterChildOptions = this.filterChild.valueChanges.pipe(
@@ -41,6 +62,18 @@ export class AgeDebtorsComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.payeeOptions.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy(): void
+  {
+      // Unsubscribe from all subscriptions
+      this._unsubscribeAll.next(null);
+      this._unsubscribeAll.complete();
   }
 
 }

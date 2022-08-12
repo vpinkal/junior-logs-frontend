@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-[#F6F8FB] rounded-lg w-[72vw] m-4 pt-2">
+    <div class="bg-[#F6F8FB] rounded-lg w-[77vw] m-4 pt-2">
         <div class="flex items-center">
             <div class="w-[70%]">
                 <form class="filter-form W-[100%] flex items-center justify-around">
@@ -50,7 +50,94 @@
             </div>
         </div>
     </div>
-    <div>
-        
+    <div class="flex justify-around w-[35%] m-4 items-center">
+        <mat-checkbox class="flex items-center text-xs">
+            <mat-icon svgIcon="heroicons_solid:chevron-down"></mat-icon>
+        </mat-checkbox>
+        <button mat-flat-button class="bg-[#F6F8FB] rounded-md text-xs">
+            <mat-icon class="text-xs mr-1" svgIcon="heroicons_solid:mail"></mat-icon>Email
+        </button>
+        <button mat-flat-button class="bg-[#F6F8FB] rounded-md text-xs">
+            <mat-icon class="text-xs mr-1" svgIcon="heroicons_solid:printer"></mat-icon>Print
+        </button>
+        <button mat-flat-button class="bg-[#F6F8FB] rounded-md text-xs">
+            <mat-icon class="text-xs mr-1" svgIcon="heroicons_solid:clipboard-list"></mat-icon>PDF
+        </button>
+    </div>
+    <div> 
+        <div class="h-[310px] overflow-auto">
+            <table mat-table [dataSource]="dataSource" matSort class="w-full font-['Poppins']">
+            
+                <ng-container matColumnDef="payee">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Payee </th>
+                    <td mat-cell *matCellDef="let row"> {{row.payee}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> Total </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="child">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Child </th>
+                    <td mat-cell *matCellDef="let row"> {{row.child}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white">  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="week3">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> 3 Weeks </th>
+                    <td mat-cell *matCellDef="let row"> {{row.week3 |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white">  </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="week2">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> 2 Weeks </th>
+                    <td mat-cell *matCellDef="let row"> {{row.week2 |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white">  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="week1">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> 1 Weeks </th>
+                    <td mat-cell *matCellDef="let row"> {{row.week1 |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> {{4098.25 |currency: 'USD'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="current">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Current </th>
+                    <td mat-cell *matCellDef="let row"> {{row.current |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> {{4098.25 |currency: 'USD'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pendingAmount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Pending Amount </th>
+                    <td mat-cell *matCellDef="let row"> {{row.pendingAmount |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> {{4098.25 |currency: 'USD'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="overPayment">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Over Payment </th>
+                    <td mat-cell *matCellDef="let row"> {{row.overPayment |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> {{4098.25 |currency: 'USD'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pendingCreditNote">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Pending Credit Note </th>
+                    <td mat-cell *matCellDef="let row"> {{row.pendingCreditNote |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> {{4098.25 |currency: 'USD'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalPendingAmount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-[#232323] font-normal"> Total Pending Amount </th>
+                    <td mat-cell *matCellDef="let row"> {{row.totalPendingAmount |currency: 'USD'}} </td>
+                    <td mat-footer-cell *matFooterCellDef class="text-white"> {{5361.84 |currency: 'USD'}} </td>
+                </ng-container>
+            
+                <tr class="bg-[#EAECF7]" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr class="bg-[#009688]" mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+            
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="10">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+        </div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
 </div>
