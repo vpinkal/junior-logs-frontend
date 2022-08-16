@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
 
+  openMenu: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

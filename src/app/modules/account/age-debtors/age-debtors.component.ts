@@ -23,6 +23,10 @@ export class AgeDebtorsComponent implements OnInit {
   childOptions: string[] = ['1', '2', '3']
   payeeOptions: string[] = ['1', '2', '3']
   filterCheck: Boolean = false;
+  filterAccounts: Boolean = false;
+  filterRecords: Boolean = false;
+  filterMonthly: Boolean = false;
+  filterWeekly: Boolean = false;
 
   displayedColumns: string[] = ['payee', 'child', 'week3', 'week2', 'week1', 'current', 'pendingAmount', 'overPayment', 'pendingCreditNote', 'totalPendingAmount'];
   dataSource: MatTableDataSource<AgeDebtor>;

@@ -11,3 +11,26 @@
        <router-outlet></router-outlet>	
      </div>
 </div>
+<div *ngIf="!openMenu" 
+  class="absolute right-1 top-[205px] bg-[#7A9DC2] rounded-tr-md rounded-br-md flex items-center cursor-pointer" 
+  matTooltip="Menu"
+  matTooltipClass="bg-black"
+  matTooltipPosition="left"
+  (click)="openMenu = true">
+  <mat-icon class="h-[15px] w-[15px] min-h-[15px] min-w-[15px] text-white my-1 mr-1" svgIcon="heroicons_solid:menu-alt-1"></mat-icon>
+</div>
+<span *ngIf="openMenu">
+  <diV  class="absolute right-1 top-[205px] bg-[#EF4444] rounded-tr-md rounded-br-md flex items-center cursor-pointer" 
+    matTooltip="Close"
+    matTooltipClass="bg-black"
+    matTooltipPosition="left"
+    (click)="openMenu = false">
+    <mat-icon class="h-[15px] w-[15px] min-h-[15px] min-w-[15px] text-white my-1 mr-1" svgIcon="heroicons_outline:x"></mat-icon>
+  </diV>
+  <div class="absolute right-1 top-[245px] bg-[#009688] rounded-tr-md rounded-br-md flex items-center cursor-pointer"
+    matTooltip="Export"
+    matTooltipClass="bg-black"
+    matTooltipPosition="left">
+    <mat-icon class="h-[15px] w-[15px] min-h-[15px] min-w-[15px] my-1 mr-1 text-white" svgIcon="heroicons_outline:folder-download"></mat-icon>
+  </div>
+</span>

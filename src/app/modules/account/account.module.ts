@@ -11,9 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const accountRoutes: Route[] = [
   {
@@ -63,16 +67,23 @@ const accountRoutes: Route[] = [
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatNativeDateModule,
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
     MatTabsModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     RouterModule.forChild(accountRoutes)
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ]
 })
 export class AccountModule { }

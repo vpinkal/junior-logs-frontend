@@ -1,0 +1,16 @@
+::ng-deep .filter-block {
+    .mat-content {
+        display: block !important;
+        mat-checkbox {
+            color: black !important;
+        }
+    }   
+    .mat-expansion-panel-content  .mat-expansion-panel-body {
+        padding-bottom: 0 !important;
+    }
+}
+::ng-deep .custom-table {
+    .mat-paginator .mat-paginator-container {
+        padding: 0;
+    }
+}
