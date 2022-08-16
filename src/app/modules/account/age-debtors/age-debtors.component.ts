@@ -16,9 +16,9 @@ import { AgeDebtor } from './age-debtors.types';
 })
 export class AgeDebtorsComponent implements OnInit {
 
-  filterChild: FormControl = new FormControl('2');
+  filterChild: FormControl = new FormControl('');
   filterChildOptions: Observable<string[]>;
-  filterPayee: FormControl = new FormControl('2');
+  filterPayee: FormControl = new FormControl('');
   filterPayeeOptions: Observable<string[]>;
   childOptions: string[] = ['1', '2', '3']
   payeeOptions: string[] = ['1', '2', '3']
