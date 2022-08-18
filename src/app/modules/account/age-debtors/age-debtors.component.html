@@ -180,6 +180,28 @@
                 </tr>
             </table>
         </div>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        <mat-paginator class="hidden" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        <diV class="flex justify-between items-center mt-2 text-[#A8ABAE]">
+            <ul class="nav nav-pills flex justify-around items-center w-[40%]" *ngIf="paginator">
+                <li class="cursor-pointer flex items-center" (click)="paginator.pageIndex = paginator.pageIndex > 0 ? paginator.pageIndex - 1 : paginator.pageIndex; dataSource.paginator = paginator">
+                    <mat-icon class="text-[#A8ABAE]" svgIcon="heroicons_solid:arrow-narrow-left"></mat-icon>
+                </li>
+                <ng-container *ngFor="let p of [].constructor(getNumberOfPages()); let i=index">
+                    <li class="nav-item cursor-pointer flex items-center" *ngIf="i==0 || i==getNumberOfPages()-1 || i==paginator.pageIndex || i==paginator.pageIndex-1 || i==paginator.pageIndex+1"
+                        (click)="paginator.pageIndex = i; dataSource.paginator = paginator">
+                        <a class="nav-link"  [ngClass]="{'text-[#009688]': i===paginator.pageIndex}">{{i+1}}</a>
+                    </li>
+                    <li class="flex items-center" *ngIf="(i==paginator.pageIndex-2 && i!==0) || (i == paginator.pageIndex + 2 && i!==getNumberOfPages()-1)">
+                        <mat-icon class="text-[#A8ABAE]" svgIcon="heroicons_solid:dots-horizontal"></mat-icon>
+                    </li>
+                </ng-container>
+                <li class="cursor-pointer flex items-center" (click)="paginator.pageIndex = paginator.pageIndex < getNumberOfPages() - 1 ?  paginator.pageIndex + 1 : paginator.pageIndex; dataSource.paginator = paginator">
+                    <mat-icon class="text-[#A8ABAE]" svgIcon="heroicons_solid:arrow-narrow-right"></mat-icon>
+                </li>
+            </ul>
+            <mat-button-toggle-group *ngIf="paginator" class="btn-group mr-2" name="pageSize" aria-label="page size" (change)="onPageSizeChange($event)">
+                <mat-button-toggle [ngClass]="{'active': paginator.pageSize == x }" *ngFor="let x of [10, 20, 50, 80, 100]" [value]="x">{{x}}</mat-button-toggle>
+            </mat-button-toggle-group>
+        </diV>
     </div>
 </div>

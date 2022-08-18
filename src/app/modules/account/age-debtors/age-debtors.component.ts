@@ -69,6 +69,7 @@ export class AgeDebtorsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.paginator.pageSize = 10;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -78,6 +79,15 @@ export class AgeDebtorsComponent implements OnInit {
       // Unsubscribe from all subscriptions
       this._unsubscribeAll.next(null);
       this._unsubscribeAll.complete();
+  }
+
+  onPageSizeChange(event):void {
+    this.paginator.pageSize = event.value;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  getNumberOfPages(): number {
+    return this.paginator.getNumberOfPages();
   }
 
 }

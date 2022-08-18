@@ -14,3 +14,26 @@
         padding: 0;
     }
 }
+::ng-deep .btn-group {
+    border: 1px solid #CACACA !important;
+    border-radius: 6px !important;
+    mat-button-toggle {
+        border: 1px solid #CACACA !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        span.mat-ripple.mat-button-toggle-ripple {
+            border: 1px solid #CACACA !important;
+            border-radius: 0 !important;
+        }
+    }
+    mat-button-toggle.active {
+        color: #009688;
+        border: 1px solid #009688 !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        span.mat-ripple.mat-button-toggle-ripple {
+            border: 1px solid #009688 !important;
+            border-radius: 0 !important;
+        }
+    }
+}

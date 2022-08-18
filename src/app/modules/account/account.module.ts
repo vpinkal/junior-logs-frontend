@@ -18,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const accountRoutes: Route[] = [
   {
@@ -66,6 +67,7 @@ const accountRoutes: Route[] = [
     CommonModule,
     FormsModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatExpansionModule,
